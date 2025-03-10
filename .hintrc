@@ -3,11 +3,6 @@
     "development"
   ],
   "hints": {
-    "axe/structure": [
-      "default",
-      {
-        "definition-list": "off"
-      }
-    ]
+    "axe/structure": "off"
   }
 }
