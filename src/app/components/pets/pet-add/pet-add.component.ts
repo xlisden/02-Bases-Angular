@@ -1,4 +1,4 @@
-import { Component, input, signal } from '@angular/core';
+import { Component, input, output, signal } from '@angular/core';
 import { Pet } from '../../../interfaces/pet.interface';
 
 @Component({
@@ -14,6 +14,7 @@ export class PetAddComponent {
   name = signal('');
   age = signal(0);
 
+  newPet = output<Pet>();
 
   addPet(){
 
@@ -22,15 +23,12 @@ export class PetAddComponent {
     }
 
     const newPet: Pet = {
-      // id: this.pets().length + 1,
-      id: 0,
+      id: Math.floor(Math.random()*100),
       name: this.name(),
       age: this.age(),
     };
 
-    // this.pets.update((list) => [...list, newPet]);
-    console.log({ newPet });
-
+    this.newPet.emit(newPet);
     this.reset();
   }
 

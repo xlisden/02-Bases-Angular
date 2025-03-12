@@ -3,13 +3,15 @@
 
 <section class="row">
   <div class="col-12 col-sm-6">
-    <pet-add/>
+    <pet-add
+      (newPet)="petService.addPet($event)"
+    />
   </div>
 
   <div class="col-12 col-sm-6">
     <pet-list
       listName="List pets"
-      [pets]="pets()"
+      [pets]="petService.pets()"
     ></pet-list>
     <!-- listName es estatico -->
   </div>
