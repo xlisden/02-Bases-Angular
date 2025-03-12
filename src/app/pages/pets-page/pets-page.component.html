@@ -3,25 +3,42 @@
 
 <section class="row">
   <div class="col-12 col-sm-6">
-    <h3>Add: </h3>
-    <input type="text" class="form-control" placeholder="Name">
-    <input type="number" class="form-control mt-2" placeholder="Age">
+    <h3>Add: {{ name() }} </h3>
+    <input type="text" class="form-control" placeholder="Name"
+      [value]="name()"
+      (change)="name.set(txtName.value)"
+      #txtName
+    >
+    <!-- change lee el evento cuando el componente pierde el foco -->
+    <input type="number" class="form-control mt-2" placeholder="Age"
+      [value]="age()"
+      (change)="age.set(+txtAge.value)"
+      #txtAge
+    >
+    <!-- input lee el evento cada vez que se tipea -->
+    <!-- (input) = "age.set(txtAge.valueAsNumber)" -->
 
-    <button class="mt-2 btn btn-primary col-3">Add</button>
+    <button (click)="addPet()" class="mt-2 btn btn-primary col-3">Add</button>
   </div>
 
   <div class="col-12 col-sm-6">
     <h3>List</h3>
     <ul>
       @for (pet of pets(); track pet.id; let idx = $index){
-        <span>{{ idx+1 }}. {{ pet.name }} </span>
-        <strong
-            [class.text-warning]="pet.age >= 11"
-            [class.text-primary]="pet.age < 10"
-        >
-          ({{pet.age}})
-        </strong>
-        <br>
+        @if(pet.age > 0){
+          <span>{{ idx+1 }}. {{ pet.name }} </span>
+          <strong
+              [class.text-warning]="pet.age >= 11"
+              [class.text-primary]="pet.age < 10"
+          >
+            ({{pet.age}})
+          </strong>
+          <br>
+        } @else {
+          <span>Mascota en otra vida! :c</span> <br>
+        }
+
+
       }
     </ul>
   </div>

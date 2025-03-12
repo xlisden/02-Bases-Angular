@@ -1,0 +1,16 @@
+<h1>Pets Page</h1>
+<hr>
+
+<section class="row">
+  <div class="col-12 col-sm-6">
+    <pet-add/>
+  </div>
+
+  <div class="col-12 col-sm-6">
+    <pet-list
+      listName="List pets"
+      [pets]="pets()"
+    ></pet-list>
+    <!-- listName es estatico -->
+  </div>
+</section>

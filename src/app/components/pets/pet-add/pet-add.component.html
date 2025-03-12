@@ -1,0 +1,9 @@
+<h3>Add: {{ name() }} </h3>
+<input type="text" class="form-control" placeholder="Name" [value]="name()" (change)="name.set(txtName.value)" #txtName>
+<!-- change lee el evento cuando el componente pierde el foco -->
+<input type="number" class="form-control mt-2" placeholder="Age" [value]="age()" (change)="age.set(+txtAge.value)"
+  #txtAge>
+<!-- input lee el evento cada vez que se tipea -->
+<!-- (input) = "age.set(txtAge.valueAsNumber)" -->
+
+<button (click)="addPet()" class="mt-2 btn btn-primary col-3">Add</button>

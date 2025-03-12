@@ -1,0 +1,16 @@
+<h3>List</h3>
+<ul>
+  @for (pet of pets(); track pet.id; let idx = $index){
+  @if(pet.age > 0){
+  <span>{{ idx+1 }}. {{ pet.name }} </span>
+  <strong [class.text-warning]="pet.age >= 7" [class.text-primary]="pet.age < 7">
+    ({{pet.age}})
+  </strong>
+  <br>
+  } @else {
+  <span>Mascota en otra vida! :c</span> <br>
+  }
+
+
+  }
+</ul>
